@@ -1,7 +1,7 @@
 /**
- * websiteStatusCheck AWS Lambda Node.js script.
+ * An AWS Lambda Node.js script to check web page status and content.
+ * Created by: Martin Tomsik, Internet Mate Ltd (United Kingdom).
  */
-
 
 const config = require('./config.json');
 const url = require('url');
