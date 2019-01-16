@@ -1,0 +1,19 @@
+{
+    "debug": false,
+    "pagesToCheck": [
+        {
+            "url": "https://www.internetmate.uk",
+            "strInHtml": [
+                "info@internetmate.co.uk",
+                "Internet Mate Ltd"
+            ]
+        },
+        {
+            "url": "https://en.wikipedia.org/wiki/European_Union",
+            "strInHtml": [
+                "Czech Republic",
+                "United Kingdom"
+            ]
+        }
+    ]
+}
