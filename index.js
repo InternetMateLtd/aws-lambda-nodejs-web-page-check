@@ -63,13 +63,9 @@ exports.handler = (event, context, callback) => {
           }
       });
     }).on('error', (err) => {
-      //console.log(err);
+      //console.log(err); // Full error.
       const error = new Error("Checking '" + endpointUrl + "' failed. Not getting any response.");
       callback(error);
     });
   }
-
-  // Success. All URLs get correct response and all strings are present.
-  //callback(null, "SUCCESS");
-
 };
