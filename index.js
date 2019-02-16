@@ -30,7 +30,7 @@ exports.handler = (event, context, callback) => {
 
       // ERROR: The resource is not giving back HTTP code 200 in response.
       if (response.statusCode != 200) {
-        const error = new Error("The URL " + endpointUrl
+        const error = new Error("[404] Not found! The URL " + endpointUrl
           + " is not returning code 200 in HTTP "
           + "response. It returns HTTP code " + response.statusCode + ".");
         callback(error);
@@ -50,22 +50,22 @@ exports.handler = (event, context, callback) => {
 
           // Find required string(s) in HTML as set in config.json.
           for (let i in strings) {
-              let strIncluded = body.includes(strings[i]);
+              const strIncluded = body.includes(strings[i]);
               let strIncludedMsg;
-              console.log("Checking string '" + strings[i]
+              console.log("Checking if string '" + strings[i]
                   + "' exits on " + endpointUrl + ": ",
                   (strIncluded) ? "[FOUND]" : "[NOT FOUND]");
               if (!strIncluded) {
-                  const error = new Error("String '" + strings[i]
+                  const error = new Error("[404] Not found! String '" + strings[i]
                     + "' not found on " + endpointUrl);
                   callback(error);
+                  break;
               }
           }
       });
     }).on('error', (err) => {
-      const error = new Error("Checking '" + endpointUrl + "' failed. Not " +
-          "getting any response from the endpoint. " +
-          "Full error message: " + err);
+      const error = new Error("[503] Error! Not getting any response from endpoint '" + endpointUrl + "'. "
+          + "Full error message: " + err);
       callback(error);
     });
   }
