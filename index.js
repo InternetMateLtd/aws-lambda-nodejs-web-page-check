@@ -43,15 +43,9 @@ exports.handler = (event, context, callback) => {
 
       response.on('end', () => {
 
-          const result = {
-              countChunks: countChunks,
-              body: body
-          };
-
-          // Find required string(s) in HTML as set in config.json.
+          // Find string(s) response body (eg. HTML, JSON) as set in config.json.
           for (let i in strings) {
               const strIncluded = body.includes(strings[i]);
-              let strIncludedMsg;
               console.log("Checking if string '" + strings[i]
                   + "' exits on " + endpointUrl + ": ",
                   (strIncluded) ? "[FOUND]" : "[NOT FOUND]");
